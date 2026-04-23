@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Юбилей — Мария Константиновна</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--text-color:#fffef0;--bg:#1a0f0a;--accent:#d4af37;--secondary:#8b4513}
+html,body{width:100%;min-height:100vh;overflow-x:hidden;font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text-color)}
+body{transition:color .6s}
+body.bold-mode .envelope-name, body.bold-mode .section-text, body.bold-mode .yakut-text, body.bold-mode .timer-num, body.bold-mode .btn, body.bold-mode .guest-name { font-weight:600 !important; }
+body.bold-mode .section-title, body.bold-mode .timer-label, body.bold-mode .envelope-hint { font-weight:500 !important; }
+
+#customBg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;display:none}
+#customBg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(26,15,10,.6)}
+.aurora-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:linear-gradient(180deg,#1a0f0a 0%,#2d1810 40%,#3d2317 100%);overflow:hidden;transition:opacity .8s}
+.aurora-bg.hidden{opacity:0;pointer-events:none}
+.aurora-layer{position:absolute;top:-20%;left:-20%;width:140%;height:140%;opacity:.35;filter:blur(60px);mix-blend-mode:screen}
+.aurora-1{background:radial-gradient(ellipse 80% 40% at 30% 30%,#d4af37 0%,#8b4513 50%,transparent 70%);animation:a1 12s ease-in-out infinite alternate}
+.aurora-2{background:radial-gradient(ellipse 70% 35% at 65% 25%,#f0e68c 0%,#cd853f 50%,transparent 65%);animation:a2 15s ease-in-out infinite alternate}
+.aurora-3{background:radial-gradient(ellipse 90% 30% at 50% 40%,#daa520 0%,#8b4513 50%,transparent 70%);animation:a3 10s ease-in-out infinite alternate}
+.aurora-4{background:radial-gradient(ellipse 60% 50% at 40% 60%,#f5deb3 0%,#a0522d 40%,transparent 65%);animation:a4 18s ease-in-out infinite alternate;opacity:.2}
+@keyframes a1{0%{transform:translate(0,0) scaleX(1) rotate(0deg)}100%{transform:translate(4%,2%) scaleX(1.05) rotate(.5deg)}}
+@keyframes a2{0%{transform:translate(0,0) scaleX(1)}100%{transform:translate(3%,-4%) scaleX(.9)}}
+@keyframes a3{0%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(-5%,-2%) rotate(-1deg)}}
+@keyframes a4{0%{transform:translate(0,0) scaleX(1)}100%{transform:translate(6%,4%) scaleX(.85)}}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;transition:opacity .8s}
+.stars.hidden{opacity:0}
+.star{position:absolute;background:#ffd700;border-radius:50%;animation:tw var(--d) ease-in-out infinite alternate}
+@keyframes tw{0%{opacity:.2;transform:scale(1)}100%{opacity:.8;transform:scale(1.3)}}
+
+.yakut-pattern{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.08}
+.pattern-top{position:absolute;top:0;left:0;width:100%;height:80px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80'%3E%3Cpath d='M0 40 L20 20 L40 40 L60 20 L80 40 L100 20 L120 40 L140 20 L160 40 L180 20 L200 40 L220 20 L240 40 L260 20 L280 40 L300 20 L320 40 L340 20 L360 40 L380 20 L400 40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ccircle cx='20' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='60' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='100' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='140' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='180' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='220' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='260' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='300' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='340' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='380' cy='40' r='8' fill='%23d4af37'/%3E%3C/svg%3E") repeat-x}
+.pattern-bottom{position:absolute;bottom:0;left:0;width:100%;height:80px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80'%3E%3Cpath d='M0 40 L20 60 L40 40 L60 60 L80 40 L100 60 L120 40 L140 60 L160 40 L180 60 L200 40 L220 60 L240 40 L260 60 L280 40 L300 60 L320 40 L340 60 L360 40 L380 60 L400 40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ccircle cx='20' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='60' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='100' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='140' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='180' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='220' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='260' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='300' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='340' cy='40' r='8' fill='%23d4af37'/%3E%3Ccircle cx='380' cy='40' r='8' fill='%23d4af37'/%3E%3C/svg%3E") repeat-x}
+
+#envelope{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(26,15,10,.8);backdrop-filter:blur(20px);cursor:pointer;transition:opacity 1.2s,transform 1.2s,visibility 1.2s}
+#envelope.opened{opacity:0;transform:scale(1.05);visibility:hidden;pointer-events:none}
+.envelope-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.2) 0%,transparent 70%);animation:ep 3s ease-in-out infinite;pointer-events:none}
+@keyframes ep{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.3);opacity:.8}}
+.envelope-text{position:relative;z-index:2;text-align:center;animation:ef 2s ease forwards}
+@keyframes ef{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+.envelope-name{font-size:clamp(1.4rem,5vw,2.4rem);font-weight:300;letter-spacing:.08em;color:var(--text-color);text-shadow:0 0 30px rgba(212,175,55,.5);margin-bottom:.3em}
+.envelope-age{font-size:clamp(4rem,15vw,8rem);font-weight:200;background:linear-gradient(135deg,#d4af37,#f0e68c,#daa520);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(212,175,55,.4));line-height:1}
+.envelope-hint{margin-top:2em;font-size:.85rem;opacity:.5;letter-spacing:.1em;animation:hp 2.5s ease-in-out infinite}
+@keyframes hp{0%,100%{opacity:.3}50%{opacity:.7}}
+
+#mainContent{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:2rem 1.5rem 4rem;opacity:0;transition:opacity 1.5s .8s}
+#mainContent.visible{opacity:1}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.fade-in.show{opacity:1;transform:translateY(0)}
+.section{text-align:center;margin-bottom:2.5rem}
+.section-title{font-size:clamp(.75rem,2.5vw,.9rem);text-transform:uppercase;letter-spacing:.25em;opacity:.5;margin-bottom:.8rem;font-weight:400;color:#d4af37}
+.section-text{font-size:clamp(1rem,3.5vw,1.3rem);font-weight:300;line-height:1.7;letter-spacing:.02em}
+.section-text.name-highlight{font-size:clamp(1.6rem,6vw,2.8rem);font-weight:200;letter-spacing:.06em;background:linear-gradient(135deg,#fffef0,#d4af37,#f0e68c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.timer-grid{display:flex;justify-content:center;gap:clamp(.8rem,3vw,1.5rem);flex-wrap:wrap}
+.timer-block{text-align:center;min-width:70px}
+.timer-num{font-size:clamp(2rem,8vw,3.5rem);font-weight:200;color:var(--text-color);text-shadow:0 0 20px rgba(212,175,55,.3);line-height:1}
+.timer-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;opacity:.4;margin-top:.4em}
+.yakut-text{font-size:clamp(.85rem,2.8vw,1.05rem);font-weight:300;line-height:1.9;opacity:.85;max-width:600px;margin:0 auto;font-style:italic;color:#f0e68c}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.8rem;margin-top:1rem}
+.gallery-item{aspect-ratio:1;border-radius:12px;overflow:hidden;background:rgba(212,175,55,.1);border:2px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;font-size:.75rem;opacity:.4;position:relative;transition:opacity .3s,transform .2s}
+.gallery-item img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+.gallery-item.has-photo{opacity:1;cursor:pointer}
+.gallery-item.has-photo:hover{transform:scale(1.03);border-color:#d4af37}
+
+.guest-list-container{position:relative;height:300px;overflow:hidden;background:rgba(212,175,55,.05);border-radius:15px;padding:2rem 0;border:1px solid rgba(212,175,55,.2)}
+.guest-scroll{position:absolute;bottom:0;left:0;width:100%;animation:scrollUp 60s linear infinite}
+.guest-item{font-size:clamp(1rem,3vw,1.2rem);padding:.5rem 0;text-align:center;opacity:0;animation:fadeInOut 3s ease-in-out forwards;color:#f0e68c}
+@keyframes scrollUp{0%{transform:translateY(100%)}100%{transform:translateY(-100%)}}
+@keyframes fadeInOut{0%{opacity:0;transform:translateY(20px)}20%{opacity:1;transform:translateY(0)}80%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-20px)}}
+
+.btn-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.9em 1.8em;border-radius:50px;background:rgba(212,175,55,.2);color:var(--text-color);text-decoration:none;font-size:.95rem;font-weight:400;letter-spacing:.04em;transition:background .3s,transform .2s;cursor:pointer;border:none;backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,.3)}
+.btn:hover{background:rgba(212,175,55,.3);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+#musicBtn{position:fixed;top:1rem;right:1rem;z-index:200;width:44px;height:44px;border-radius:50%;background:rgba(212,175,55,.2);border:1px solid rgba(212,175,55,.3);color:var(--text-color);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .3s}
+#musicBtn.visible{opacity:1;pointer-events:auto}
+#musicBtn svg{width:20px;height:20px;fill:currentColor}
+
+#photoModal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:400;background:rgba(26,15,10,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;cursor:pointer;backdrop-filter:blur(5px)}
+#photoModal.active{display:flex;opacity:1}
+#photoModal img{max-width:92vw;max-height:85vh;object-fit:contain;border-radius:8px;transform:scale(.85);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 20px 60px rgba(0,0,0,.6);border:2px solid rgba(212,175,55,.3)}
+#photoModal.active img{transform:scale(1)}
+#photoModal .close-x{position:absolute;top:20px;right:20px;width:44px;height:44px;background:rgba(212,175,55,.2);border:1px solid rgba(212,175,55,.3);border-radius:50%;color:#d4af37;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#photoModal .close-x:hover{background:rgba(212,175,55,.3)}
+
+#adminOverlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500;background:rgba(26,15,10,.95);backdrop-filter:blur(30px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:2rem 1rem}
+#adminOverlay.active{display:flex}
+.admin-box{width:100%;max-width:500px;padding:2rem;border-radius:20px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3)}
+.admin-box h2{text-align:center;font-weight:300;font-size:1.3rem;margin-bottom:1.5rem;letter-spacing:.1em;color:#d4af37}
+.admin-field{margin-bottom:1.2rem}
+.admin-field label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;opacity:.5;margin-bottom:.4em;color:#f0e68c}
+.admin-field input,.admin-field textarea{width:100%;padding:.7em 1em;border-radius:10px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);color:#fffef0;font-size:.95rem;font-family:inherit;outline:none}
+.admin-field textarea{resize:vertical;min-height:80px}
+.admin-colors{display:flex;gap:.6rem;margin-top:.3em}
+.color-swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .3s}
+.color-swatch:hover{transform:scale(1.15)}.color-swatch.active{border-color:#d4af37}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.5em 0}
+.toggle-row span{font-size:.85rem;opacity:.7;color:#f0e68c}
+.toggle{width:44px;height:24px;border-radius:12px;background:rgba(212,175,55,.2);border:1px solid rgba(212,175,55,.3);cursor:pointer;position:relative;transition:background .3s}
+.toggle.on{background:rgba(212,175,55,.5)}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#d4af37;transition:transform .3s}
+.toggle.on::after{transform:translateX(20px)}
+.admin-divider{height:1px;background:rgba(212,175,55,.2);margin:1.5rem 0}
+.admin-actions{display:flex;gap:.8rem;margin-top:1.5rem}
+.admin-actions button{flex:1;padding:.8em;border-radius:12px;border:none;font-size:.9rem;cursor:pointer;font-family:inherit}
+.admin-save{background:rgba(212,175,55,.3);color:#d4af37;border:1px solid rgba(212,175,55,.3)}.admin-save:hover{background:rgba(212,175,55,.4)}
+.admin-close{background:rgba(212,175,55,.1);color:#fffef0;border:1px solid rgba(212,175,55,.3)}.admin-close:hover{background:rgba(212,175,55,.2)}
+#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(212,175,55,.9);color:#1a0f0a;padding:.8em 1.5em;border-radius:50px;opacity:0;pointer-events:none;transition:all .4s;z-index:600;font-size:.9rem;font-weight:600}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}.btn{padding:.8em 1.4em;font-size:.85rem}}
+@media(min-width:768px){.gallery{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div id="customBg"></div>
+<div class="aurora-bg" id="auroraBg"><div class="aurora-layer aurora-1"></div><div class="aurora-layer aurora-2"></div><div class="aurora-layer aurora-3"></div><div class="aurora-layer aurora-4"></div></div>
+<div class="stars" id="stars"></div>
+<div class="yakut-pattern"><div class="pattern-top"></div><div class="pattern-bottom"></div></div>
+
+<div id="envelope"><div class="envelope-glow"></div><div class="envelope-text"><div class="envelope-name" id="envName">Мария Константиновна</div><div class="envelope-age">75</div><div class="envelope-hint">таарыйа аһыҥ</div></div></div>
+<button id="musicBtn" title="Музыка"><svg id="musicIcon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg></button>
+
+<div id="mainContent">
+  <div class="section fade-in"><div class="section-title">Юбилей</div><div class="section-text name-highlight" id="displayName">Мария Константиновна</div><div style="font-size:clamp(3rem,12vw,6rem);font-weight:200;margin-top:.2em;background:linear-gradient(135deg,#d4af37,#f0e68c,#daa520);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">75</div></div>
+  <div class="section fade-in"><div class="section-title">Төрөөбүт күммэр диэри</div><div class="timer-grid"><div class="timer-block"><div class="timer-num" id="tDays">00</div><div class="timer-label">күн</div></div><div class="timer-block"><div class="timer-num" id="tHours">00</div><div class="timer-label">чаас</div></div><div class="timer-block"><div class="timer-num" id="tMins">00</div><div class="timer-label">мүнүүтэ</div></div><div class="timer-block"><div class="timer-num" id="tSecs">00</div><div class="timer-label">сөкүүндэ</div></div></div></div>
+  <div class="section fade-in"><div class="section-title">Кэмэ</div><div class="section-text" id="displayDate">Субуота, 25 муус устар 2026, 16:00</div><div style="opacity:.4;margin-top:.2em;font-size:.85rem;color:#d4af37">Дьокуускай куорат</div></div>
+  <div class="section fade-in"><div class="section-title">Миэстэтэ</div><div class="section-text" id="displayAddress">г. Якутск, проспект Ленина 5/2 к1, банкетный зал "Алгыс Балаҕан"</div></div>
+  <div class="section fade-in"><div class="section-title">Ырааһах тыл</div><div class="yakut-text" id="displayYakut">Күндү доҕотторум, бииргэ үөрэммиттэрим! Күндү юбилейбар ыалдьыт буолан үөрүүбүн үллэстэн, кэпсэтэн, иһитэн, көрсах кэлэн күндү күммэр кэлэргитин кэтэһэбин!</div></div>
+  <div class="section fade-in"><div class="section-title">Ыалдьыттар</div><div class="guest-list-container" id="guestList"></div></div>
+  <div class="section fade-in"><div class="section-title">Фотогалерея</div><div class="gallery" id="gallery"></div></div>
+  <div class="section fade-in"><div class="section-title">Сибээс</div><div class="btn-row"><a class="btn" id="btnCall" href="tel:+79644252699"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>Эрийиҥ</a><a class="btn" id="btnWA" href="https://wa.me/79644252699" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a><a class="btn" id="btn2GIS" href="https://2gis.ru/yakutsk/search/Проспект%20Ленина%205%2F2" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>2ГИС</a></div></div>
+</div>
+
+<div id="photoModal">
+  <button class="close-x">✕</button>
+  <img src="" alt="Фото">
+</div>
+
+<div id="adminOverlay"><div class="admin-box"><h2>⚙ Настройки</h2>
+  <div class="admin-field"><label>Имя</label><input type="text" id="admName"></div>
+  <div class="admin-field"><label>Дата</label><input type="text" id="admDate"></div>
+  <div class="admin-field"><label>Адрес</label><input type="text" id="admAddress"></div>
+  <div class="admin-field"><label>Телефон</label><input type="text" id="admPhone"></div>
+  <div class="admin-field"><label>Якутский текст</label><textarea id="admYakut"></textarea></div>
+  <div class="admin-field"><label>Список гостей (через запятую)</label><textarea id="admGuests"></textarea></div>
+  <div class="admin-field"><label>Цвет текста</label><div class="admin-colors"><div class="color-swatch active" data-color="#fffef0" style="background:#fffef0"></div><div class="color-swatch" data-color="#d4af37" style="background:#d4af37"></div><div class="color-swatch" data-color="#f0e68c" style="background:#f0e68c"></div><div class="color-swatch" data-color="#daa520" style="background:#daa520"></div></div></div>
+  <div class="admin-divider"></div>
+  <div class="toggle-row"><span>Жирный шрифт</span><button class="toggle" id="toggleBold" onclick="toggleSwitch(this)"></button></div>
+  <div class="toggle-row"><span>Северное сияние</span><button class="toggle on" id="toggleAurora" onclick="toggleSwitch(this)"></button></div>
+  <div class="admin-divider"></div>
+  <div class="admin-actions"><button class="admin-close" onclick="closeAdmin()">Сабыы</button><button class="admin-save" onclick="saveAdmin()">Харайыы</button></div>
+</div></div>
+<div id="toast"></div>
+
+<script>
+const FILES = {
+  bg: '',
+  music: 'music.mp3',
+  photos: ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg','photo6.jpg']
+};
+
+const CFG_KEY = 'jubilee75_cfg';
+const DEFAULTS = {
+  name:'Мария Константиновна', 
+  date:'Субуота, 25 муус устар 2026, 16:00',
+  dateISO:'2026-04-25T16:00:00+09:00', 
+  address:'г. Якутск, проспект Ленина 5/2 к1, банкетный зал "Алгыс Балаҕан"',
+  phone:'+79644252699', 
+  yakut:'Күндү доҕотторум, бииргэ үөрэммиттэрим! Күндү юбилейбар ыалдьыт буолан үөрүүбүн үллэстэн, кэпсэтэн, иһитэн, көрсах кэлэн күндү күммэр кэлэргитин кэтэһэбин!',
+  textColor:'#fffef0', 
+  textBold:false, 
+  showAurora:true,
+  guests:'Ганя,Аннушка,Арылхан,Айта,Милана,Гена,Марианна,Костя,Мария,Сардаана,Сайаана,Розанна,Яна,Афоня,Айсен,Саина,Лиза,Айсен,Артем,Нария,Айыллаана,Лена,Маргарита,Марик,Света,Егор,Настя,Матвей,Анна Гаврильевна,Индира,Туллай,Полина'
+};
+
+function loadCfg(){ try{return JSON.parse(localStorage.getItem(CFG_KEY))||{...DEFAULTS}}catch(e){return{...DEFAULTS}} }
+function saveCfg(d){ localStorage.setItem(CFG_KEY,JSON.stringify(d)) }
+
+function applyUI(d){
+  document.getElementById('envName').textContent=d.name;
+  document.getElementById('displayName').textContent=d.name;
+  document.getElementById('displayDate').textContent=d.date;
+  document.getElementById('displayAddress').textContent=d.address;
+  document.getElementById('displayYakut').textContent=d.yakut;
+  document.documentElement.style.setProperty('--text-color',d.textColor);
+  document.body.classList.toggle('bold-mode', !!d.textBold);
+  document.getElementById('btnCall').href='tel:'+d.phone;
+  document.getElementById('btnWA').href='https://wa.me/'+d.phone.replace(/\D/g,'');
+  document.getElementById('admName').value=d.name;
+  document.getElementById('admDate').value=d.date;
+  document.getElementById('admAddress').value=d.address;
+  document.getElementById('admPhone').value=d.phone;
+  document.getElementById('admYakut').value=d.yakut;
+  document.getElementById('admGuests').value=d.guests;
+  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.toggle('active',s.dataset.color===d.textColor));
+  document.getElementById('toggleBold').classList.toggle('on', !!d.textBold);
+  document.getElementById('toggleAurora').classList.toggle('on', !!d.showAurora);
+  
+  const bg=document.getElementById('customBg');
+  if(FILES.bg && FILES.bg.trim()!==''){ bg.style.backgroundImage=`url('${FILES.bg}')`; bg.style.display='block'; } 
+  else { bg.style.display='none'; }
+  
+  const auroraActive = d.showAurora && (!FILES.bg || FILES.bg.trim()==='');
+  document.getElementById('auroraBg').classList.toggle('hidden', !auroraActive);
+  document.getElementById('stars').classList.toggle('hidden', !auroraActive);
+
+  const g=document.getElementById('gallery'); g.innerHTML='';
+  const ph=FILES.photos||[];
+  if(!ph.length){for(let i=0;i<6;i++)g.innerHTML+=`<div class="gallery-item">Фото ${i+1}</div>`}
+  else{ph.forEach(src=>{
+    const div=document.createElement('div');div.className='gallery-item has-photo';
+    div.innerHTML=`<img src="${src}" loading="lazy">`;
+    div.addEventListener('click', e=>{ e.stopPropagation(); openPhoto(src); });
+    g.appendChild(div)});
+    for(let i=ph.length;i<6;i++)g.innerHTML+=`<div class="gallery-item">Фото ${i+1}</div>`}
+  
+  renderGuests(d.guests);
+}
+
+function renderGuests(guestsString){
+  const container = document.getElementById('guestList');
+  const guests = guestsString.split(',').map(g => g.trim()).filter(g => g);
+  container.innerHTML = '';
+  
+  const scroll = document.createElement('div');
+  scroll.className = 'guest-scroll';
+  
+  guests.forEach((guest, index) => {
+    const item = document.createElement('div');
+    item.className = 'guest-item';
+    item.textContent = guest;
+    item.style.animationDelay = `${index * 3}s`;
+    scroll.appendChild(item);
+  });
+  
+  container.appendChild(scroll);
+}
+
+function openPhoto(src){
+  const m=document.getElementById('photoModal');
+  m.querySelector('img').src=src;
+  m.classList.add('active');
+}
+document.getElementById('photoModal').addEventListener('click', e=>{
+  if(e.target.id==='photoModal' || e.target.classList.contains('close-x')){
+    document.getElementById('photoModal').classList.remove('active');
+  }
+});
+
+let tap=0, tTimer;
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#displayName,.envelope-name'))return;
+  tap++;clearTimeout(tTimer);tTimer=setTimeout(()=>tap=0,2000);
+  if(tap>=5){tap=0;document.getElementById('adminOverlay').classList.add('active');applyUI(loadCfg())}
+});
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('active')}
+function saveAdmin(){
+  const d=loadCfg();
+  d.name=document.getElementById('admName').value;
+  d.date=document.getElementById('admDate').value;
+  d.address=document.getElementById('admAddress').value;
+  d.phone=document.getElementById('admPhone').value;
+  d.yakut=document.getElementById('admYakut').value;
+  d.guests=document.getElementById('admGuests').value;
+  d.textBold=document.getElementById('toggleBold').classList.contains('on');
+  d.showAurora=document.getElementById('toggleAurora').classList.contains('on');
+  saveCfg(d);applyUI(d);closeAdmin();showToast('Харайылла')}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function toggleSwitch(btn){btn.classList.toggle('on')}
+document.querySelectorAll('.color-swatch').forEach(sw=>sw.addEventListener('click',function(){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));this.classList.add('active');document.documentElement.style.setProperty('--text-color',this.dataset.color)}));
+
+function updT(){const t=new Date(loadCfg().dateISO),n=new Date();let d=t-n;if(d<0)d=0;
+  document.getElementById('tDays').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
+  document.getElementById('tHours').textContent=String(Math.floor(d%864e5/36e5)).padStart(2,'0');
+  document.getElementById('tMins').textContent=String(Math.floor(d%36e5/6e4)).padStart(2,'0');
+  document.getElementById('tSecs').textContent=String(Math.floor(d%6e4/1e3)).padStart(2,'0')}
+setInterval(updT,1000);updT();
+
+(()=>{const c=document.getElementById('stars');for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const z=Math.random()*2+1;s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s;opacity:${Math.random()*.5+.2}`;c.appendChild(s)}})();
+
+let aCtx, play=false, nodes=[], intv, cust;
+function initA(){if(!aCtx)aCtx=new(window.AudioContext||webkitAudioContext)()}
+function ding(){initA();const t=aCtx.currentTime;[523.25,659.25,783.99,1046.5].forEach((f,i)=>{const o=aCtx.createOscillator(),g=aCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.15/(i+1),t+.01);g.gain.exponentialRampToValueAtTime(.001,t+1.5+i*.2);o.connect(g).connect(aCtx.destination);o.start(t+i*.05);o.stop(t+2+i*.2)})}
+const P=[196,220,261.63,293.66,329.63,392,440,523.25,587.33], SQ=[0,2,4,2,5,4,2,0,7,5,4,2,0,2,4,7,5,4,2,0,3,5,7,5,3,2,0,2,4,2,0,-1,-1,-1];
+function nNote(f,t,d,v){if(!aCtx||!play||f<=0)return;const o=aCtx.createOscillator(),g=aCtx.createGain(),fl=aCtx.createBiquadFilter();o.type='triangle';o.frequency.value=f;fl.type='lowpass';fl.frequency.value=1200;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.08);g.gain.setValueAtTime(v,t+d*.6);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(fl).connect(g).connect(aCtx.destination);o.start(t);o.stop(t+d+.05);nodes.push(o)}
+function startMusic(){
+  initA();play=true;
+  document.getElementById('musicIcon').innerHTML='<path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>';
+  if(FILES.music && FILES.music.trim()!==''){
+    cust=new Audio(FILES.music);cust.loop=true;cust.volume=.6;cust.play().catch(console.warn);return;
+  }
+  function loop(){if(!play)return;const now=aCtx.currentTime;
+    const p=aCtx.createOscillator(),pg=aCtx.createGain(),pf=aCtx.createBiquadFilter();p.type='sine';p.frequency.value=98;pf.type='lowpass';pf.frequency.value=400;pg.gain.setValueAtTime(0,now);pg.gain.linearRampToValueAtTime(.04,now+2);pg.gain.linearRampToValueAtTime(.04,now+6);pg.gain.linearRampToValueAtTime(0,now+8);p.connect(pf).connect(pg).connect(aCtx.destination);p.start(now);p.stop(now+8);
+    let t=now;for(let i=0;i<SQ.length;i++){if(SQ[i]>=0)nNote(P[SQ[i]],t,.6+Math.random()*.3,.08+Math.random()*.04);t+=.55+Math.random()*.2;if(t-now>7.5)break}
+    const bs=aCtx.sampleRate*8,buf=aCtx.createBuffer(1,bs,aCtx.sampleRate),d=buf.getChannelData(0);for(let i=0;i<bs;i++)d[i]=(Math.random()*2-1)*.008;
+    const n=aCtx.createBufferSource();n.buffer=buf;const nf=aCtx.createBiquadFilter();nf.type='bandpass';nf.frequency.value=300+Math.random()*400;nf.Q.value=2;const ng=aCtx.createGain();ng.gain.setValueAtTime(0,now);ng.gain.linearRampToValueAtTime(.06,now+3);ng.gain.linearRampToValueAtTime(0,now+8);n.connect(nf).connect(ng).connect(aCtx.destination);n.start(now);n.stop(now+8);
+    intv=setTimeout(loop,7500)}
+  loop()}
+function stopMusic(){play=false;clearTimeout(intv);nodes.forEach(n=>{try{n.stop()}catch(e){}});nodes=[];if(cust){cust.pause();cust=null}document.getElementById('musicIcon').innerHTML='<path d="M16.5 12A4.5 4.5 0 0 0 21 7.5V2.5L9 4v10l7.5-2.2V12zM9 16V4L2 5.5v11L9 16z"/><path d="M19 19a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/><path d="M5 21a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>'}
+document.getElementById('musicBtn').addEventListener('click',()=>play?stopMusic():startMusic());
+
+let opened=false;
+document.getElementById('envelope').addEventListener('click',function(){
+  if(opened)return;opened=true;ding();this.classList.add('opened');
+  document.getElementById('mainContent').classList.add('visible');document.getElementById('musicBtn').classList.add('visible');
+  setTimeout(()=>startMusic(),600);
+  setTimeout(()=>document.querySelectorAll('.fade-in').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*300)),400)})
+
+applyUI(loadCfg());
+</script>
+</body>
+</html>
